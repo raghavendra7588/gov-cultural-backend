@@ -1,0 +1,78 @@
+Artist System Code						कलाकार सिस्टम कोड
+First Name								पहिले नाव
+middle name								मधले नाव
+Last Name								आडनाव
+Date Of Birth							जन्म तारीख
+Annual Income							वार्षिक उत्पन्न
+Art Type								कला प्रकार			
+Period Of Works / Years					कामाचा कालावधी / वर्ष
+Grade									ग्रेड
+Address									पत्ता
+Taluka									तालुका
+District								जिल्हा
+Contact No 1							संपर्क क्रमांक १
+Contact No 2							संपर्क क्रमांक 2			
+Aadhar NO								आधार क्रमांक			
+Pan NO									पॅन क्रमांक	
+Spouse Name								जोडीदाराचे नाव
+Current Age								चालू वय
+Family Member Count						कुटुंबातील सदस्यांची संख्या		
+Dependent Family Member Count			आश्रित कुटुंब सदस्यांची संख्या								this one
+Religion								धर्म		
+Caste									जात	
+Work Details							कामाचा तपशील
+Art Locations							कला स्थाने
+Account Name							खात्याचे नाव						
+Account Number							खाते क्रमांक			
+Bank Name								बँकेचे नाव
+IFSC Code								आयएफएससी कोड
+City									शहर
+Ill / Handicaped						आजारी / अपंग
+Financial Benefit Beneficent			आर्थिक लाभार्थी	
+Financial Benefit Received(Amount)		प्राप्त आर्थिक लाभ (रक्कम)
+Documents List							कागदपत्रांची यादी
+place									जागा          ठिकाण
+Application Date						अर्जाची तारीख
+								
+								
+								
+personal details						वैयक्तिक माहिती
+cultural 								सांस्कृतिक				
+marathi 								मराठी	
+
+
+
+
+
+
+
+
+personal details			
+
+Create Employee 						नवीन कर्मचारी 
+bank 									बँक		
+
+
+bank details 							बँक तपशील
+Upload Documents						अपलोड  कागदपत्रे 	
+
+
+
+
+date of birth proof 									जन्म पुरावा तारीख
+Maharashtra resident proof								महाराष्ट्र रहिवासी पुरावा
+Annual Income from  Tahasildar Proof					तहसीलदार पुराव्यांमधून वार्षिक उत्पन्न
+Illness or Handicaped Proof             				आजार किंवा अपंग पुरावा
+Publications,Invetations and Govt Recognistion Proof	प्रकाशने, गुंतवणूकी आणि सरकारी मान्यता पुरावा
+Cultural Ministry Certification Proof					सांस्कृतिक मंत्रालय प्रमाणन पुरावा
+Sponsered Programs Proof								प्रायोजित प्रोग्रामचा पुरावा
+Collector Nominated Program Participation Proof			जिल्हाधिकारी नामनिर्देशित कार्यक्रम सहभागाचा पुरावा
+Institution and Individual Recomendation Proof			संस्था आणि वैयक्तिक पुनर्प्राप्तीचा पुरावा
+Goverment Beneficiary Benfit Plan Proof					सरकार लाभार्थी बेनिफिट योजनेचा पुरावा	
+Notarised Certificate Of Confirmation Proof 			पुष्टीकरण पुराव्याचे प्रमाणित प्रमाणपत्र
+Upload Manual Form Proof								अपलोड मॅन्युअल फॉर्म 
+Pension Amount Monthly Basis							निवृत्तीवेतनाची रक्कम मासिक आधार
+Pension Amount yearly Basis								पेंशन रक्कम वार्षिक आधार				
+
+logout 													बाहेर पडणे
+		
