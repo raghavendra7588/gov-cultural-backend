@@ -17,6 +17,22 @@ namespace culturalProject.Controllers
 
 
         [HttpGet]
+        [Route("api/panchayat/uploadedDocuments/{id:int}")]
+        public HttpResponseMessage getUploadedDocumentsData(int id)
+        {
+            try
+            {
+                DataTable dt = objProposalFormModifiedBL.getAllUploadedImageData(id);
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
         public HttpResponseMessage getall(int id)
         {
             try
@@ -46,6 +62,8 @@ namespace culturalProject.Controllers
 
             }
         }
+
+
 
 
 

@@ -35,7 +35,7 @@ namespace culturalProject.Controllers
         {
             try
             {
-                DataTable dt = objDynamicActionByStateBL.postDynamicNewProposalByState(objDynamicActionByState);
+                DataTable dt = objDynamicActionByStateBL.postDynamicReqToPutOnHoldByState(objDynamicActionByState);
                 return Request.CreateResponse(HttpStatusCode.Created, dt);
             }
             catch (Exception ex)

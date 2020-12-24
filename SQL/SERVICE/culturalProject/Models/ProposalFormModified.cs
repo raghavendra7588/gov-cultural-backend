@@ -85,6 +85,27 @@ namespace culturalProject.Models
 
 
 
+
+        public DataTable getAllUploadedImageData(int id)
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_GetUploadedDocumentsList";
+            command.Parameters.AddWithValue("@ProposalFormId", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+
         public DataTable getAllData(int id)
         {
             SqlCommand command = new SqlCommand();
