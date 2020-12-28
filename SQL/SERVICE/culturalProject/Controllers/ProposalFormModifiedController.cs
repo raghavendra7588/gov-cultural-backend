@@ -142,7 +142,7 @@ namespace culturalProject.Controllers
 
             if (Convert.ToInt32(strId) == 0)
             {
-               int id= objProposalFormModifiedBL.PostProposalFormModified(objProposalFormModified);
+                int id = objProposalFormModifiedBL.PostProposalFormModified(objProposalFormModified);
                 result = Request.CreateResponse(HttpStatusCode.OK, id);
             }
             else
@@ -161,7 +161,6 @@ namespace culturalProject.Controllers
 
             string docType = HttpContext.Current.Request.Params.Get("DocType");
             string proposalFormId = HttpContext.Current.Request.Params.Get("proposalFormId");
-            var myStr="";
 
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count > 0)
@@ -219,8 +218,107 @@ namespace culturalProject.Controllers
 
             }
         }
-      
+
+
+
+
+        [HttpPost]
+        [Route("api/proposalFormModified/deleteFile")]
+        public HttpResponseMessage deleteFile(DeleteFiles objDeleteFiles)
+        {
+            try
+            {   
+                string imgName = objDeleteFiles.FilePath;
+                int pos = imgName.LastIndexOf("/") + 1;
+                if (pos > 0)
+                {
+                    imgName = imgName.Substring(pos, imgName.Length - pos);
+                }
+
+                var filePath = HttpContext.Current.Server.MapPath("~/data/images/" + objDeleteFiles.FileType + "/" +imgName);
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+
+
+                objProposalFormModifiedBL.deleteFilesByPanchayat(objDeleteFiles);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
         }
+
+
+
+        [HttpPost]
+        [Route("api/editDocuments")]
+        public HttpResponseMessage PostEditFiles()
+        {
+            HttpResponseMessage result = null;
+
+            string docType = HttpContext.Current.Request.Params.Get("DocType");
+            string documentId = HttpContext.Current.Request.Params.Get("documentId");
+            string previouslyUploadedPath = HttpContext.Current.Request.Params.Get("prevFilePath");
+
+            string imgName = previouslyUploadedPath;
+            int pos = imgName.LastIndexOf("/") + 1;
+            if (pos > 0)
+            {
+                imgName = imgName.Substring(pos, imgName.Length - pos);
+            }
+
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 0)
+            {
+                var docfiles = new List<string>();
+                foreach (string file in httpRequest.Files)
+                {
+                    string finalPath = string.Empty;
+                    var postedFile = httpRequest.Files[file];
+                    var filePath = HttpContext.Current.Server.MapPath("~/data/images/" + docType + "/" + postedFile.FileName);
+                    var prevFilePath = HttpContext.Current.Server.MapPath("~/data/images/" + docType + "/" + imgName);
+                    filePath = filePath.Replace("///", "/").Replace("//", "/");
+
+
+                
+                    if (!File.Exists(prevFilePath))
+                    {
+                        File.Delete(prevFilePath);
+                        if (!File.Exists(filePath))
+                        {
+                            postedFile.SaveAs(filePath);
+                            finalPath = "/data/images/" + docType + "/" + postedFile.FileName;
+                        }
+                        else
+                        {
+                            Random rnd = new Random();
+                            int randomNumber = rnd.Next(1, 10001);
+                            string randomNumberString = randomNumber.ToString();
+
+                            string filePathnew = HttpContext.Current.Server.MapPath("~/data/images/" + docType + "/" + randomNumberString + postedFile.FileName);
+                            postedFile.SaveAs(filePathnew);
+                            finalPath = "/data/images/" + docType + "/" + randomNumberString + postedFile.FileName;
+                        }
+
+                    }
+                 
+                    docfiles.Add("/data/images/" + docType + "/" + postedFile.FileName);
+                    docfiles.Add(docType);
+                    objProposalFormModifiedBL.updateImagesToDb(finalPath, docType, Convert.ToInt32(documentId));
+                }
+                result = Request.CreateResponse(HttpStatusCode.Created, docfiles);
+            }
+            else
+            {
+                result = Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            return result;
+        }
+    }
 
 }
 

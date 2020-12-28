@@ -78,6 +78,14 @@ namespace culturalProject.Models
         public int EditByPanchayat { get; set; }
     }
 
+    public class DeleteFiles
+    {
+        public int DocumentId { get; set; }
+        public int ProposalFormId { get; set; }
+        public string FilePath { get; set; }
+        public string FileType { get; set; }
+
+    }
 
     public class ProposalFormModifiedBL
     {
@@ -333,7 +341,19 @@ namespace culturalProject.Models
             cmd.Parameters.AddWithValue("@ProposalFormId", proposalFormId);
             cmd.ExecuteNonQuery();
             conn.Close();
+        }
 
+        public void updateImagesToDb(string path, string documentType, int DocumentId)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_updateDocuments", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@filePath", path);
+            cmd.Parameters.AddWithValue("@fileType", documentType);
+            cmd.Parameters.AddWithValue("@DocumentId", DocumentId);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void postIsDraftToDb(int proposalFormId,string isDraft)
@@ -344,6 +364,17 @@ namespace culturalProject.Models
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", Convert.ToInt32(proposalFormId));
             cmd.Parameters.AddWithValue("@IsDraft", isDraft);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public void deleteFilesByPanchayat(DeleteFiles objDeleteFiles)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_DeleteFiles", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@DocumentId", Convert.ToInt32(objDeleteFiles.DocumentId));
             cmd.ExecuteNonQuery();
             conn.Close();
         }

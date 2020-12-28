@@ -72,9 +72,6 @@ namespace culturalProject.Models
 
     }
 
-    //rsnForRejecctn yes
-   // RejectnId  yes
-    //rejectnTimeStamp yes
 
     public class RejectedByDistrict{
         public int id { get; set; }
@@ -95,10 +92,6 @@ namespace culturalProject.Models
             SqlCommand cmd = new SqlCommand("Mst_UpdateNewApporvalStatus", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
-
-
-
-            // cmd.Parameters.AddWithValue("@UserId", Convert.ToInt32(objNewProposalDistrict.UserId));
             cmd.Parameters.AddWithValue("@id", Convert.ToInt32(objNewProposalDistrict.id));
             cmd.Parameters.AddWithValue("@Status", objNewProposalDistrict.Status);
             cmd.Parameters.AddWithValue("@Grade",objNewProposalDistrict.Grade);
