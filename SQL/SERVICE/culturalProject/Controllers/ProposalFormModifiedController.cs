@@ -84,6 +84,23 @@ namespace culturalProject.Controllers
         }
 
 
+        [HttpGet]
+        [Route("api/proposalForm/admin/newApprovals")]
+        public HttpResponseMessage getProposalFormForNewApprovalsForAdmin()
+        {
+            try
+            {
+                DataTable dt = objProposalFormModifiedBL.getAllNewProposalFormDataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+
 
         [HttpPost]
         public HttpResponseMessage Post()

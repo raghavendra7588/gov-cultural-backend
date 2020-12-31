@@ -59,5 +59,101 @@ namespace culturalProject.Controllers
 
             }
         }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/admin/gradeA")]
+        public HttpResponseMessage getGradeAWiseDataByAdmin()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeADataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/admin/gradeB")]
+        public HttpResponseMessage getGradeBWiseDataByAdmin()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeBDataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/admin/gradeC")]
+        public HttpResponseMessage getGradeCWiseDataByAdmin()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeCDataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/state/gradeA")]
+        public HttpResponseMessage getGradeAWiseDataByState()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeADataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/state/gradeB")]
+        public HttpResponseMessage getGradeBWiseDataByState()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeBDataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/state/gradeC")]
+        public HttpResponseMessage getGradeCWiseDataByState()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeCDataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
     }
 }

@@ -78,6 +78,124 @@ namespace culturalProject.Models
             return firstTable;
 
         }
+
+        public DataTable getAllGradeADataByAdmin()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_Get_Grade_A_Wise_Data_By_Admin";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+
+        public DataTable getAllGradeBDataByAdmin()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_Get_Grade_B_Wise_Data_By_Admin";
+           
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+        public DataTable getAllGradeCDataByAdmin()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_Get_Grade_C_Wise_Data_By_Admin";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+
+        public DataTable getAllGradeADataByState()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_Get_Grade_A_Wise_Data_By_State";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+        public DataTable getAllGradeBDataByState()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_Get_Grade_B_Wise_Data_By_State";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+
+
+        public DataTable getAllGradeCDataByState()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_Get_Grade_C_Wise_Data_By_State";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
     }
 
 }

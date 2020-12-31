@@ -77,5 +77,22 @@ namespace culturalProject.Controllers
 
             }
         }
+
+
+        [HttpGet]
+        [Route("api/RejectedMembers/GetAllRejectedMembersByAdmin")]
+        public HttpResponseMessage getAllRejectedAdminData()
+        {
+            try
+            {
+                DataTable dt = objRejectedMembers.getALLRejectedMembersDataByAdminUser();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
     }
 }

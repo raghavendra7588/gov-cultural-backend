@@ -78,5 +78,52 @@ namespace culturalProject.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeAByAdmin")]
+        public HttpResponseMessage PostDyanmicGradeA(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeADataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+    
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeBByAdmin")]
+        public HttpResponseMessage PostDyanmicGradeB(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeBDataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeCByAdmin")]
+        public HttpResponseMessage PostDyanmicGradeC(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeCDataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

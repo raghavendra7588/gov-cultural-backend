@@ -99,5 +99,24 @@ namespace culturalProject.Models
             return firstTable;
 
         }
+
+        public DataTable getALLRejectedMembersDataByAdminUser()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_GetListOfRejectedMembersByAdmin";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
     }
 }

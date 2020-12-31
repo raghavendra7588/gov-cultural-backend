@@ -220,6 +220,73 @@ namespace culturalProject.Models
         }
 
 
+        public DataTable getReqToPutOnHoldMembersByAdminUser()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_GetRequestToPutOnHoldListByAdmin";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            DataTable secondTableLog = fileData.Tables[1];
+
+            firstTable.Columns.Add("ReqForEditByPanchayat");
+            firstTable.Columns.Add("ReqForEditByPanchayatAt");
+            firstTable.Columns.Add("ReqForHoldByPanchayatAt");
+            firstTable.Columns.Add("ReqForHoldByPanchayat");
+            firstTable.Columns.Add("ReqToRemoveFromHoldByPanchayat");
+            firstTable.Columns.Add("ReqToRemoveFromHoldByPanchayatAt");
+
+            firstTable.Columns.Add("UserName");
+            firstTable.Columns.Add("TimeStamp");
+
+            for (int i = 0; i < firstTable.Rows.Count; i++)
+            {
+                int proposalFormId = Convert.ToInt32(firstTable.Rows[i]["id"]);
+
+                for (int j = 0; j < secondTableLog.Rows.Count; j++)
+                {
+                    int proposalFormIdLog = Convert.ToInt32(secondTableLog.Rows[j]["ProposalFormId"]);
+                    if (proposalFormId == proposalFormIdLog)
+                    {
+                        string StatusNamee = secondTableLog.Rows[j]["StatusName"].ToString();
+                        if (StatusNamee == "REQ TO REMOVE FROM HOLD BY PANCHAYAT")
+                        {
+                            firstTable.Rows[i]["UserName"] = secondTableLog.Rows[j]["ReqToRemoveFromHoldByPanchayat"];
+                            firstTable.Rows[i]["TimeStamp"] = secondTableLog.Rows[j]["ReqToRemoveFromHoldByPanchayatAt"];
+                        }
+
+                        if (StatusNamee == "REQ FOR EDIT BY PANCHAYAT")
+                        {
+                            firstTable.Rows[i]["UserName"] = secondTableLog.Rows[j]["ReqForEditByPanchayat"];
+                            firstTable.Rows[i]["TimeStamp"] = secondTableLog.Rows[j]["ReqForEditByPanchayatAt"];
+                        }
+
+                        if (StatusNamee == "REQ FOR HOLD BY PANCHAYAT")
+                        {
+                            firstTable.Rows[i]["TimeStamp"] = secondTableLog.Rows[j]["ReqForHoldByPanchayatAt"];
+                            firstTable.Rows[i]["UserName"] = secondTableLog.Rows[j]["ReqForHoldByPanchayat"];
+                        }
+                        firstTable.Rows[i]["ReqForEditByPanchayat"] = secondTableLog.Rows[j]["ReqForEditByPanchayat"];
+                        firstTable.Rows[i]["ReqForEditByPanchayatAt"] = secondTableLog.Rows[j]["ReqForEditByPanchayatAt"];
+                        firstTable.Rows[i]["ReqForHoldByPanchayatAt"] = secondTableLog.Rows[j]["ReqForHoldByPanchayatAt"];
+                        firstTable.Rows[i]["ReqForHoldByPanchayat"] = secondTableLog.Rows[j]["ReqForHoldByPanchayat"];
+                        firstTable.Rows[i]["ReqToRemoveFromHoldByPanchayat"] = secondTableLog.Rows[j]["ReqToRemoveFromHoldByPanchayat"];
+                        firstTable.Rows[i]["ReqToRemoveFromHoldByPanchayatAt"] = secondTableLog.Rows[j]["ReqToRemoveFromHoldByPanchayatAt"];
+                    }
+                }
+            }
+            return firstTable;
+
+        }
+
         public void updateOnHoldByDistict(ReqToPutOnHold objReqToPutOnHold)
     {
         SqlConnection conn = new SqlConnection(strConn);

@@ -64,6 +64,21 @@ namespace culturalProject.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/ReqToPutOnHold/ReqToPutOnHoldByAdmin")]
+        public HttpResponseMessage getAllReqToPutOnHoldDataByAdmin()
+        {
+            try
+            {
+                DataTable dt = objReqToPutOnHoldBL.getReqToPutOnHoldMembersByAdminUser();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
 
         [HttpPost]
         [Route("api/ReqToPutOnHoldToHoldByDistrict")]

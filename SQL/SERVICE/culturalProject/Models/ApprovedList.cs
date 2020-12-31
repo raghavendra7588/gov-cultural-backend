@@ -37,46 +37,65 @@ namespace culturalProject.Models
 
             }
 
-        
+            public DataTable getApprovedDataByAdmin()
+            {
+                SqlCommand command = new SqlCommand();
+                SqlConnection conn = new SqlConnection(strConn);
+                command.Connection = conn;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Mst_GetApprovedListByAdmin";
 
-
-         public DataTable getApprovedListByDistrict(int id)
-        {
-            SqlCommand command = new SqlCommand();
-            SqlConnection conn = new SqlConnection(strConn);
-            command.Connection = conn;
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "Mst_GetApprovedListByDistrict";
-            command.Parameters.AddWithValue("@UserId", id);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
-            conn.Open();
+                conn.Open();
 
-            DataSet fileData = new DataSet();
-            adapter.Fill(fileData, "fileData");
-            conn.Close();
-            DataTable firstTable = fileData.Tables[0];
-            return firstTable;
+                DataSet fileData = new DataSet();
+                adapter.Fill(fileData, "fileData");
+                conn.Close();
+                DataTable firstTable = fileData.Tables[0];
+                return firstTable;
 
-        }
+            }
 
 
-        public DataTable getApprovedListPanchayatData(int id)
-        {
-            SqlCommand command = new SqlCommand();
-            SqlConnection conn = new SqlConnection(strConn);
-            command.Connection = conn;
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "Mst_GetApprovedListPanchyat";
-            command.Parameters.AddWithValue("@UserId", id);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            conn.Open();
 
-            DataSet fileData = new DataSet();
-            adapter.Fill(fileData, "fileData");
-            conn.Close();
-            DataTable firstTable = fileData.Tables[0];
-            return firstTable;
 
-        }
+            public DataTable getApprovedListByDistrict(int id)
+            {
+                SqlCommand command = new SqlCommand();
+                SqlConnection conn = new SqlConnection(strConn);
+                command.Connection = conn;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Mst_GetApprovedListByDistrict";
+                command.Parameters.AddWithValue("@UserId", id);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                conn.Open();
+
+                DataSet fileData = new DataSet();
+                adapter.Fill(fileData, "fileData");
+                conn.Close();
+                DataTable firstTable = fileData.Tables[0];
+                return firstTable;
+
+            }
+
+
+            public DataTable getApprovedListPanchayatData(int id)
+            {
+                SqlCommand command = new SqlCommand();
+                SqlConnection conn = new SqlConnection(strConn);
+                command.Connection = conn;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Mst_GetApprovedListPanchyat";
+                command.Parameters.AddWithValue("@UserId", id);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                conn.Open();
+
+                DataSet fileData = new DataSet();
+                adapter.Fill(fileData, "fileData");
+                conn.Close();
+                DataTable firstTable = fileData.Tables[0];
+                return firstTable;
+
+            }
     }
 }

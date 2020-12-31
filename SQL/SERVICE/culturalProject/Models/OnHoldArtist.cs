@@ -84,7 +84,24 @@ namespace culturalProject.Models
             command.Connection = conn;
             command.CommandType = CommandType.StoredProcedure;
             command.CommandText = "Mst_GetListOfOnHoldMembersByState";
-           // command.Parameters.AddWithValue("@UserId", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+        public DataTable getOnHoldMembersAtAdminUser()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_GetListOfOnHoldMembersByAdmin";
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             conn.Open();
 
