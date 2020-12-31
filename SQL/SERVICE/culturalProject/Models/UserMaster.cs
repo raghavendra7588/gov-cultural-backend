@@ -89,7 +89,7 @@ namespace culturalProject.Models
             cmd.Parameters.AddWithValue("@RoleId", objUserMaster.RoleId);         
             if (objUserMaster.DistrictId == 0)
             {
-                objUserMaster.DistrictId = 0;
+                objUserMaster.DistrictId = 38;
                 cmd.Parameters.AddWithValue("@DistrictId", objUserMaster.DistrictId);
             }
             else

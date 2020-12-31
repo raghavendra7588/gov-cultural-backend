@@ -39,14 +39,52 @@ namespace culturalProject.Models
             DataTable firstTable = fileData.Tables[0];
             return firstTable;
         }
+        public DataTable postDynamicApprovedListByAdmin(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicApprovedListByAdmin", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-   
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicStateApprovedList.RoleName);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicStateApprovedList.PanchayatName);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+
 
         public DataTable postRejectedListToDb(DynamicStateApprovedList objDynamicStateApprovedList)
         {
             SqlConnection conn = new SqlConnection(strConn);
             conn.Open();
             SqlCommand cmd = new SqlCommand("Mst_GetDynamicRejectedListByDistrict", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicStateApprovedList.RoleName);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicStateApprovedList.PanchayatName);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+        public DataTable postRejectedListToDbByAdmin(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicRejectedListByAdmin", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
@@ -71,6 +109,25 @@ namespace culturalProject.Models
             cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
             cmd.Parameters.AddWithValue("@RoleName", objDynamicStateApprovedList.RoleName);
            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicStateApprovedList.PanchayatName);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+        public DataTable postHoldListToDbByAdmin(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicHoldListByAdmin", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicStateApprovedList.RoleName);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicStateApprovedList.PanchayatName);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
             DataSet fileData = new DataSet();
