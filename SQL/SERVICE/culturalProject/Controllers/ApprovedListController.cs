@@ -27,6 +27,22 @@ namespace culturalProject.Controllers
         }
 
         [HttpGet]
+        [Route("api/ApprovedList/Admin")]
+        public HttpResponseMessage getApprovedListByDistrict()
+        {
+            try
+            {
+                DataTable dt = objApprovedListBL.getApprovedDataByAdmin();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
         [Route("api/ApprovedList/district/{id:int}")]
         public HttpResponseMessage getApprovedListByDistrict(int id)
         {

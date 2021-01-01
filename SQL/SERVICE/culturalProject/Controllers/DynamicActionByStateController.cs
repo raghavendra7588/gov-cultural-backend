@@ -30,6 +30,21 @@ namespace culturalProject.Controllers
         }
 
         [HttpPost]
+        [Route("api/DynamicActionByState/DynamicStateNewProposalByAdmin")]
+        public HttpResponseMessage postDynamicNewProposalByAdmin(DynamicActionByState objDynamicActionByState)
+        {
+            try
+            {
+                DataTable dt = objDynamicActionByStateBL.postDynamicNewProposalByAdmin(objDynamicActionByState);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
         [Route("api/DynamicActionByState/DynamicStateReqToPutOnHoldByState")]
         public HttpResponseMessage postDynamicReqToPutOnHoldByState(DynamicActionByState objDynamicActionByState)
         {
@@ -44,6 +59,21 @@ namespace culturalProject.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("api/DynamicActionByState/DynamicStateReqToPutOnHoldByAdmin")]
+        public HttpResponseMessage postDynamicReqToPutOnHoldByAdmin(DynamicActionByState objDynamicActionByState)
+        {
+            try
+            {
+                DataTable dt = objDynamicActionByStateBL.postDynamicReqToPutOnHoldByAdmin(objDynamicActionByState);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+ 
         [HttpPost]
         [Route("api/DynamicActionByState/DynamicStateRoleDistrictData")]
         public HttpResponseMessage postDynamicStateRoleDistrictData(DynamicActionRoleDistrict objDynamicActionRoleDistrict)

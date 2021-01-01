@@ -53,20 +53,20 @@ namespace culturalProject.Controllers
         public HttpResponseMessage Post(UserMaster objUserMaster)
         {
             int intId = objUserMaster.UserId;
-
+            HttpResponseMessage result = null;
             try
             {
                 if (intId == 0)
                   {
-                    objUserMasterBL.postAddressToDb(objUserMaster);
+                    int id=objUserMasterBL.postAddressToDb(objUserMaster);
+                    result=Request.CreateResponse(HttpStatusCode.OK,id);
                 }
-                  else
-                  {                   
+                else
+                {
                     objUserMasterBL.updateAddressToDb(objUserMaster, intId);
-                } 
-                
-
-                return Request.CreateResponse(HttpStatusCode.Created);
+                    result = Request.CreateResponse(HttpStatusCode.OK);
+                }
+                return result;
             }
             catch (Exception ex)
             {
@@ -74,5 +74,69 @@ namespace culturalProject.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/userMaster/adminUser")]
+        public HttpResponseMessage getAllAdminUser()
+        {
+            try
+            {
+                DataTable dt = objUserMasterBL.getAllAdminUserData();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+
+        [HttpGet]
+        [Route("api/userMaster/stateUser")]
+        public HttpResponseMessage getAllStateUser()
+        {
+            try
+            {
+                DataTable dt = objUserMasterBL.getAllStateUserData();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/userMaster/districteUser")]
+        public HttpResponseMessage getAllDistrictUser()
+        {
+            try
+            {
+                DataTable dt = objUserMasterBL.getAllDistrictUserData();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/userMaster/panchayatUser")]
+        public HttpResponseMessage getAllPanchayatUser()
+        {
+            try
+            {
+                DataTable dt = objUserMasterBL.getAllPanchayatUserData();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
     }
 }

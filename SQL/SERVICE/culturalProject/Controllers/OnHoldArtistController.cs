@@ -62,6 +62,22 @@ namespace culturalProject.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/ListOnHold/Admin")]
+        public HttpResponseMessage getAllListOnHoldAtAdmin()
+        {
+            try
+            {
+                DataTable dt = objOnHoldArtistBL.getOnHoldMembersAtAdminUser();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
 
         [HttpPost]
         public HttpResponseMessage getAllDistrictData(OnHoldArtist objOnHoldArtist)

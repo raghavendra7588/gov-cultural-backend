@@ -28,6 +28,22 @@ namespace culturalProject.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DynamicStateApprovedListByAdmin")]
+        public HttpResponseMessage postDynamicApprovedListByAdmin(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDynamicApprovedListByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
 
         [HttpPost]
         [Route("api/DynamicStateRejectedList")]
@@ -36,6 +52,22 @@ namespace culturalProject.Controllers
             try
             {
                 DataTable dt = objDynamicStateApprovedListBL.postRejectedListToDb(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DynamicStateRejectedListByAdmin")]
+        public HttpResponseMessage PostRejectedByAdmin(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postRejectedListToDbByAdmin(objDynamicStateApprovedList);
                 return Request.CreateResponse(HttpStatusCode.Created, dt);
             }
             catch (Exception ex)
@@ -61,6 +93,21 @@ namespace culturalProject.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DynamicStateHoldListByAdmin")]
+        public HttpResponseMessage postHoldListToDbByAdmin(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postHoldListToDbByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
 
         [HttpGet]
         [Route("api/getPanchayatNameBasedOnDistrict/{id:int}")]
@@ -78,5 +125,52 @@ namespace culturalProject.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeAByAdmin")]
+        public HttpResponseMessage PostDyanmicGradeA(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeADataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+    
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeBByAdmin")]
+        public HttpResponseMessage PostDyanmicGradeB(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeBDataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeCByAdmin")]
+        public HttpResponseMessage PostDyanmicGradeC(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeCDataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }
