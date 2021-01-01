@@ -45,3 +45,4 @@ C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-b
 C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\obj\Release\culturalProject.csproj.CopyComplete
 C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\obj\Release\culturalProject.dll
 C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\obj\Release\culturalProject.pdb
+C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\bin\Swashbuckle.Core.dll

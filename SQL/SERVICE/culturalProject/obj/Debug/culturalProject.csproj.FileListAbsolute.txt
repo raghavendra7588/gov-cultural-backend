@@ -92,3 +92,6 @@ C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-b
 C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\obj\Debug\culturalProject.csproj.CopyComplete
 C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\obj\Debug\culturalProject.dll
 C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\obj\Debug\culturalProject.pdb
+C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\bin\Swashbuckle.Core.dll
+C:\Users\kirti\OneDrive\Documents\Workspaces\Govt Project\Backend\gov-cultural-backend\SQL\SERVICE\culturalProject\bin\WebActivatorEx.dll
