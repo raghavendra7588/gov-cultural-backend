@@ -79,6 +79,66 @@ namespace culturalProject.Models
 
         }
 
+        public DataTable getAllGradeADataByDistrict(int id)
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "MSt_getGrade_A_Wise_Data_By_District";
+            command.Parameters.AddWithValue("@UserId", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+        public DataTable getAllGradeBDataByDistrict(int id)
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "MSt_getGrade_B_Wise_Data_By_District";
+            command.Parameters.AddWithValue("@UserId", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+
+        public DataTable getAllGradeCDataByDistrict(int id)
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "MSt_getGrade_C_Wise_Data_By_District";
+            command.Parameters.AddWithValue("@UserId", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
+
+
+
         public DataTable getAllGradeADataByAdmin()
         {
             SqlCommand command = new SqlCommand();

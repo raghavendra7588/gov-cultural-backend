@@ -219,5 +219,52 @@ namespace culturalProject.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeAByDistrict")]
+        public HttpResponseMessage PostDyanmicGradeAByDistrict(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeADataByDistrict(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeBByDistrict")]
+        public HttpResponseMessage PostDyanmicGradeBByDistrict(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeBDataByDistrict(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeCByDistrict")]
+        public HttpResponseMessage PostDyanmicGradeCByDistrict(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeCDataByDistrict(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

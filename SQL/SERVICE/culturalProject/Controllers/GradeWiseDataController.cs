@@ -60,6 +60,61 @@ namespace culturalProject.Controllers
             }
         }
 
+
+
+        [HttpGet]
+        [Route("api/GradeWiseData/gradeA_ByDistrict/{id:int}")]
+        public HttpResponseMessage getGradeAByDistrict(int id)
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeADataByDistrict(id);
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+
+        [HttpGet]
+        [Route("api/GradeWiseData/gradeB_ByDistrict/{id:int}")]
+        public HttpResponseMessage getGradeBByDistrict(int id)
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeBDataByDistrict(id);
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+
+
+        [HttpGet]
+        [Route("api/GradeWiseData/gradeC_ByDistrict/{id:int}")]
+        public HttpResponseMessage getGradeCByDistrict(int id)
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeCDataByDistrict(id);
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+
+
         [HttpGet]
         [Route("api/GradeWiseData/admin/gradeA")]
         public HttpResponseMessage getGradeAWiseDataByAdmin()

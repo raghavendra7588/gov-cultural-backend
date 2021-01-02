@@ -26,5 +26,20 @@ namespace culturalProject.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("api/changePassword")]
+        public HttpResponseMessage ChangePassword(ChangePassword objChangePassword)
+        {
+            try
+            {
+               int id=objLoginBL.changeUserPassword(objChangePassword);
+               return Request.CreateResponse(HttpStatusCode.OK,id);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

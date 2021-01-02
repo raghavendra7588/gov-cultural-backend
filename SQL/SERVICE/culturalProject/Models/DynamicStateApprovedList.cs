@@ -282,5 +282,66 @@ namespace culturalProject.Models
             return firstTable;
         }
 
+
+        public DataTable postDyanmicGradeADataByDistrict(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicGradeADataByDistrict", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicStateApprovedList.RoleName);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicStateApprovedList.PanchayatName);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+        public DataTable postDyanmicGradeBDataByDistrict(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicGradeBDataByDistrict", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicStateApprovedList.RoleName);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicStateApprovedList.PanchayatName);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+        public DataTable postDyanmicGradeCDataByDistrict(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicGradeCDataByDistrict", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicStateApprovedList.RoleName);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicStateApprovedList.PanchayatName);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
     }
 }
