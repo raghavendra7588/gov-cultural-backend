@@ -89,6 +89,23 @@ namespace culturalProject.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("api/DynamicActionByState/DynamicDistrictUsersByAdmin")]
+        public HttpResponseMessage postDynamicDistrictUsersByAdmin(DynamicActionRoleDistrict objDynamicActionRoleDistrict)
+        {
+            try
+            {
+                DataTable dt = objDynamicActionByStateBL.postDynamicDistrictUsersDataByAdmin(objDynamicActionRoleDistrict);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
         [HttpPost]
         [Route("api/DynamicActionByState/DynamicStateRolePanchayatData")]
         public HttpResponseMessage postDynamicStateRolePanchayatData(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
@@ -96,6 +113,51 @@ namespace culturalProject.Controllers
             try
             {
                 DataTable dt = objDynamicActionByStateBL.postDynamicRoleByPanchayat(objDynamicActionRolePanchayat);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/DynamicActionByState/DynamicPanchayatDataByAdmin")]
+        public HttpResponseMessage postDynamicPanchayatDataByAdmin(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
+        {
+            try
+            {
+                DataTable dt = objDynamicActionByStateBL.postDynamicPanchayatByAdmin(objDynamicActionRolePanchayat);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/DynamicActionByState/DynamicUserCreatedDataByAdmin")]
+        public HttpResponseMessage postDynamicUserCreatedDataByAdmin(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
+        {
+            try
+            {
+                DataTable dt = objDynamicActionByStateBL.postDynamicUserCreatedDataByAdmin(objDynamicActionRolePanchayat);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("api/DynamicActionByState/DynamicUserCreatedDataByState")]
+        public HttpResponseMessage postDynamicUserCreatedDataByState(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
+        {
+            try
+            {
+                DataTable dt = objDynamicActionByStateBL.postDynamicUserCreatedDataByState(objDynamicActionRolePanchayat);
                 return Request.CreateResponse(HttpStatusCode.Created, dt);
             }
             catch (Exception ex)

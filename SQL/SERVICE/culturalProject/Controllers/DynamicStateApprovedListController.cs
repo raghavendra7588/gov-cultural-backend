@@ -172,5 +172,52 @@ namespace culturalProject.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeAByState")]
+        public HttpResponseMessage PostDyanmicGradeAByState(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeADataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeBByState")]
+        public HttpResponseMessage PostDyanmicGradeBByState(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeBDataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("api/DynamicStateApprovedList/DyanmicGradeCByState")]
+        public HttpResponseMessage PostDyanmicGradeCByState(DynamicStateApprovedList objDynamicStateApprovedList)
+        {
+            try
+            {
+                DataTable dt = objDynamicStateApprovedListBL.postDyanmicGradeCDataByAdmin(objDynamicStateApprovedList);
+                return Request.CreateResponse(HttpStatusCode.Created, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

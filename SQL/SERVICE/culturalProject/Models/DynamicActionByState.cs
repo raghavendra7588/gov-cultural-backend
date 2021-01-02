@@ -28,6 +28,7 @@ namespace culturalProject.Models
     {
         public int DistrictId { get; set; }
         public string PanchayatName { get; set; }
+        public string RoleName { get; set; }
     }
 
 
@@ -240,6 +241,25 @@ namespace culturalProject.Models
             return firstTable;
         }
 
+        public DataTable postDynamicDistrictUsersDataByAdmin(DynamicActionRoleDistrict objDynamicActionRoleDistrict)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_DynamicDistrictUsersByAdmin", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicActionRoleDistrict.DistrictId);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicActionRoleDistrict.RoleName);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
         public DataTable postDynamicRoleByPanchayat(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
         {
             SqlConnection conn = new SqlConnection(strConn);
@@ -250,6 +270,63 @@ namespace culturalProject.Models
             cmd.Parameters.AddWithValue("@DistrictId", objDynamicActionRolePanchayat.DistrictId);
             cmd.Parameters.AddWithValue("@PanchayatId", objDynamicActionRolePanchayat.PanchayatName);
 
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+        public DataTable postDynamicPanchayatByAdmin(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicPanchayatDataByAdmin", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicActionRolePanchayat.DistrictId);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicActionRolePanchayat.PanchayatName);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicActionRolePanchayat.RoleName);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+        public DataTable postDynamicUserCreatedDataByAdmin(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicUsersCreatedDataByAdmin", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicActionRolePanchayat.DistrictId);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicActionRolePanchayat.PanchayatName);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicActionRolePanchayat.RoleName);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+        }
+
+        public DataTable postDynamicUserCreatedDataByState(DynamicActionRolePanchayat objDynamicActionRolePanchayat)
+        {
+            SqlConnection conn = new SqlConnection(strConn);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicUsersCreatedDataByStateUser", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@DistrictId", objDynamicActionRolePanchayat.DistrictId);
+            cmd.Parameters.AddWithValue("@PanchyatId", objDynamicActionRolePanchayat.PanchayatName);
+            cmd.Parameters.AddWithValue("@RoleName", objDynamicActionRolePanchayat.RoleName);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
             DataSet fileData = new DataSet();

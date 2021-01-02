@@ -144,8 +144,17 @@ namespace culturalProject.Models
 
             cmd.Parameters.AddWithValue("@DistrictId", objUserMaster.DistrictId);
             cmd.Parameters.AddWithValue("@PanchyatId", objUserMaster.PanchyatName);
-            
-            cmd.Parameters.AddWithValue("@PinCode", objUserMaster.PinCode);
+
+
+            if (objUserMaster.PinCode == null)
+            {
+                objUserMaster.PinCode = "";
+                cmd.Parameters.AddWithValue("@PinCode", objUserMaster.PinCode);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@PinCode", objUserMaster.PinCode);
+            }
 
             cmd.Parameters.AddWithValue("@UpdatedBy", objUserMaster.UpdatedBy);
             cmd.ExecuteNonQuery();
