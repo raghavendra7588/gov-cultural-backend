@@ -164,7 +164,7 @@ namespace culturalProject.Models
         {
             SqlConnection conn = new SqlConnection(strConn);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Mst_GetDynamicGradeADataByAdmin", conn);
+            SqlCommand cmd = new SqlCommand("Mst_GetDynamicGradeADataByState", conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@DistrictId", objDynamicStateApprovedList.DistrictId);

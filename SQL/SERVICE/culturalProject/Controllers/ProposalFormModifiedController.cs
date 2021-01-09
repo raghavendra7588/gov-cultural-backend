@@ -156,7 +156,7 @@ namespace culturalProject.Controllers
             objProposalFormModified.ReasonForEdit = HttpContext.Current.Request.Params.Get("reasonForEdit");
             //  objProposalFormModified.HoldByDistrict = Convert.ToInt32(HttpContext.Current.Request.Params.Get("HoldByDistrict"));
             objProposalFormModified.EditByPanchayat = Convert.ToInt32(HttpContext.Current.Request.Params.Get("editByPanchayat"));
-
+            objProposalFormModified.FinancialBenefitReceived= HttpContext.Current.Request.Params.Get("financialBenefitReceived");
             if (Convert.ToInt32(strId) == 0)
             {
                 int id = objProposalFormModifiedBL.PostProposalFormModified(objProposalFormModified);

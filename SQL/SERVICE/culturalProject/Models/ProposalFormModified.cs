@@ -10,54 +10,39 @@ namespace culturalProject.Models
 {
     public class ProposalFormModified
     {
-
         public int id { get; set; }
         public string ArtistSystemCode { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
-
         public string DOB { get; set; }
         public string AnnualIncome { get; set; }
         public string ArtType { get; set; }
         public string PeriodOfWork { get; set; }
-
         public string Address { get; set; }
         public string Taluka { get; set; }
         public string District { get; set; }
         public string ContactNo1 { get; set; }
         public string ContactNo2 { get; set; }
-
         public string AadharNo { get; set; }
         public string PanNo { get; set; }
         public string SpouseName { get; set; }
-
         public string FamilyMemberCount { get; set; }
         public string DependentFamilyMemberCount { get; set; }
         public string Religion { get; set; }
         public string Caste { get; set; }
         public string WorkDetails { get; set; }
-
         public string ArtLocations { get; set; }
-
-
         public string AccountName { get; set; }
         public string AccountNumber { get; set; }
-
-
         public string BankName { get; set; }
         public string BankIFSCCode { get; set; }
         public string City { get; set; }
-
         public int PinCode { get; set; }
-
         public string Gender { get; set; }
-
         public string Place { get; set; }
-
         public string ApplicationDate { get; set; }
         public string FullName { get; set; }
-
         public int UserId { get; set; }
 
         public string Status { get; set; }
@@ -65,17 +50,15 @@ namespace culturalProject.Models
     
         public string CurrentAge { get; set; }
         public string ReasonForRejection { get; set; }
-
         public int StatusId { get; set; }
         public int CreatedBy { get; set; }
         public int UpdatedBy { get; set; }
-
         public int ApprovedByDistrict { get; set; }
         public int HoldByDistrict { get; set; }
         public int HoldByPanchayat { get; set; }
         public string ReasonForEdit { get; set; }
-
         public int EditByPanchayat { get; set; }
+        public string FinancialBenefitReceived { get; set; }
     }
 
     public class DeleteFiles
@@ -271,6 +254,7 @@ namespace culturalProject.Models
             cmd.Parameters.AddWithValue("@CurrentAge", objProposalFormModified.CurrentAge);
             cmd.Parameters.AddWithValue("@StatusId", Convert.ToInt32(objProposalFormModified.StatusId));
             cmd.Parameters.AddWithValue("@CreatedBy", Convert.ToInt32(objProposalFormModified.CreatedBy));
+            cmd.Parameters.AddWithValue("@FinancialBenefitReceived", objProposalFormModified.FinancialBenefitReceived);
             cmd.Parameters.Add("@id", SqlDbType.Int).Direction = ParameterDirection.Output;
 
             cmd.ExecuteNonQuery();
@@ -346,7 +330,7 @@ namespace culturalProject.Models
             cmd.Parameters.AddWithValue("@UpdatedBy", Convert.ToInt32(objProposalFormModified.UpdatedBy));
             cmd.Parameters.AddWithValue("@ReasonForEdit", objProposalFormModified.ReasonForEdit);
             cmd.Parameters.AddWithValue("@ReqForEditByPanchayat", objProposalFormModified.EditByPanchayat);
-
+            cmd.Parameters.AddWithValue("@FinancialBenefitReceived", objProposalFormModified.FinancialBenefitReceived);
             cmd.ExecuteNonQuery();
             conn.Close();
             return "ok";
