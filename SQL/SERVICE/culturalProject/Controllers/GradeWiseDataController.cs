@@ -376,5 +376,37 @@ namespace culturalProject.Controllers
 
             }
         }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/state/allGradeByState")]
+        public HttpResponseMessage getAllGradeWiseDataByState()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeDataByState();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
+
+        [HttpGet]
+        [Route("api/GradeWiseData/admin/allGradeByAdmin")]
+        public HttpResponseMessage getAllGradeWiseDataByAdmin()
+        {
+            try
+            {
+                DataTable dt = objGradeWiseDataBL.getAllGradeDataByState();
+                return Request.CreateResponse(HttpStatusCode.OK, dt);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+
+            }
+        }
     }
 }

@@ -451,6 +451,25 @@ namespace culturalProject.Models
             return firstTable;
 
         }
+
+        public DataTable getAllGradeDataByState()
+        {
+            SqlCommand command = new SqlCommand();
+            SqlConnection conn = new SqlConnection(strConn);
+            command.Connection = conn;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Mst_GetGrade_ALL_Wise_Data_By_STATE";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            conn.Open();
+
+            DataSet fileData = new DataSet();
+            adapter.Fill(fileData, "fileData");
+            conn.Close();
+            DataTable firstTable = fileData.Tables[0];
+            return firstTable;
+
+        }
     }
 
 }
